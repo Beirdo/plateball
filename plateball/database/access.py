@@ -117,8 +117,9 @@ class PlateballDatabase(Database, Singleton):
         runs_away = 0
         innings = []
         complete = False
+        print("Game %s" % gameid)
         for (inning, score) in enumerate(data):
-            print(inning, score)
+            print(inning + 1, score)
             away = score[0]
             if inning < 8 or runs_home <= runs_away:
                 # Remember, enumerate starts at 0, this is inning 9+
@@ -147,6 +148,7 @@ class PlateballDatabase(Database, Singleton):
             game.complete = True
             game.runs_home = runs_home
             game.runs_away = runs_away
+            print("Total:  %s - %s\n" % (runs_away, runs_home))
 
             homeTeam = game.home_team
             homeTeam.runs_for += runs_home
